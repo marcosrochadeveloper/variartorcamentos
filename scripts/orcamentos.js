@@ -1,26 +1,28 @@
     const materiais = {
 
-        "avery": { "ar": 35.00, "gf": 32.00, "verniz": true, "recorte": true, "complemento": "do Vinil Avery"},
+        "avery": { "ar": 35.00, "gf": 33.00, "verniz": true, "recorte": true, "complemento": "do Vinil Avery"},
 
-        "blackout": { "ar": 35.00, "gf": 32.00, "verniz": true, "recorte": true, "complemento": "do Vinil Blackout"},
+        "blackout": { "ar": 35.00, "gf": 33.00, "verniz": true, "recorte": true, "complemento": "do Vinil Blackout"},
 
-        "fosco": { "ar": 35.00, "gf": 32.00, "verniz": true, "recorte": true, "complemento": "do Vinil Fosco"},
+        "fosco": { "ar": 35.00, "gf": 33.00, "verniz": true, "recorte": true, "complemento": "do Vinil Fosco"},
 
-        "perfurado": { "gf": 35.00, "ar": false, "tab3": 120.00, "verniz": false, "recorte": false, "complemento": "do Vinil Perfurado"},
+        "perfurado": { "gf": 35.00, "ar": null, "verniz": false, "recorte": false, "complemento": "do Vinil Perfurado"},
 
-        "promocional": { "ar": 120.00, "gf": 120.00, "tab3": 120.00, "verniz": false, "recorte": false, "complemento": "do Vinil Promocional"},
+        "promocional": { "ar": 32.00, "gf": 30.00, "verniz": false, "recorte": false, "complemento": "do Vinil Promocional"},
 
-        "transparente": { "ar": 76.00, "gf": 76.00, "tab3": 76.00, "verniz": false, "recorte": true, "complemento": "do Vinil Transparente"},
+        "transparente": { "ar": 38.00, "gf": 35.00, "verniz": false, "recorte": true, "complemento": "do Vinil Transparente"},
 
-        "lona440": { "tab1": 75.00, "tab2": 65.00, "tab3": 60.00, "verniz": true, "recorte": false, "complemento": "da Lona 440g"},
+        "lona440": { "ar": 35.00, "gf": 32.00, "verniz": true, "recorte": false, "complemento": "da Lona 440g"},
 
-        "outdoor": { "tab1": 33.00, "tab2": 33.00, "tab3": 33.00, "verniz": false, "recorte": false, "complemento": "do Papel Outdoor"},
+        "lona340": { "ar": 34.00, "gf": 31.00, "verniz": true, "recorte": false, "complemento": "da Lona 340g"},
+
+        "outdoor": { "gf": 15.00, "tab2": 33.00, "verniz": false, "recorte": false, "complemento": "do Papel Outdoor"},
 
         "acabamentos": { "recorte": 10.00, "verniz": 14.00, "bannerate70cm": 8.00, "bannerate120cm": 10.00, "bannerate145cm": 12.00, "bannerate200cm": 20.00}
         
     };
 
-    function valores(){
+    /*function valores(){
         let material = document.querySelector("#material_opt").value;
         let verniz = document.querySelector("#boxverniz");
         let recorte = document.querySelector("#boxrecorte");
@@ -31,10 +33,11 @@
 
     function acabamento(){
         valores();
-    }
+    }*/
 
     function acabamento(){
         let material = document.querySelector("#material_opt").value;
+        let resolucao = document.querySelector("#resolucao_opt").value;
         let verniz = document.querySelector("#boxverniz");
         let recorte = document.querySelector("#boxrecorte");
         let semacabamentos = document.querySelector("#semacabamentos");
@@ -56,6 +59,7 @@
     }
     function calcular(){
         let material = document.querySelector("#material_opt").value;
+        let resolucao = document.querySelector("#resolucao_opt").value;
         let verniz = document.querySelector("#boxverniz");
         let recorte = document.querySelector("#boxrecorte");
         let resultado = document.querySelector("#resultado");
@@ -71,12 +75,10 @@
         let m2total = m2unitario*quantidade;
         let precom2 = 0;
 
-        if (m2total >= 1){
-            precom2 = materiais[material].tab3;
-        } else if(m2total >= 0.5){
-            precom2 = materiais[material].tab2;
+        if (resolucao == "ar"){
+            precom2 = materiais[material].ar;
         } else{
-            precom2 = materiais[material].tab1;
+            precom2 = materiais[material].gf;
         }
 
         if (comverniz){
